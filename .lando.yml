@@ -1,0 +1,7 @@
+name: cv
+recipe: lamp
+config:
+  webroot: .
+proxy:
+  appserver:
+    - cv.dev 

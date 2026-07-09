@@ -1,0 +1,627 @@
+/* General Styles */
+:root {
+    --highlight-yellow: #fafaaf; /* Yellow highlight color */
+    --separator-yellow: #e8c87e; /* Separator line color from image */
+}
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f5f7; /* Slightly cooler grey background */
+    margin: 0;
+    padding: 0;
+    font-size: 10pt; /* Base font size */
+}
+
+.container {
+    max-width: 850px; /* A bit wider than standard A4 for better screen reading */
+    margin: 30px auto; /* Increased top/bottom margin */
+    padding: 40px; /* Increased padding */
+    background-color: #fdfdfd; /* Slightly off-white */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    border-radius: 8px; /* Slightly rounded corners for the container */
+}
+
+h1, h2, h3, h4, h5 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    color: #1a4a7d; /* Darker, less saturated blue */
+    font-family: 'Poppins', sans-serif; /* New heading font */
+    font-weight: 600; /* Slightly less bold */
+}
+
+h1 {
+    font-size: 24pt;
+    margin-bottom: 0.1em;
+    color: #111; /* Very dark grey */
+    font-weight: 700; /* Keep Name bolder */
+}
+
+h2 { /* Section titles */
+    font-size: 14pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-bottom: 2px solid #1a4a7d; /* Match new blue */
+    padding-bottom: 0.3em;
+    margin-bottom: 1.5em; /* Increased space after title */
+    margin-top: 2em; /* Increased space before title */
+    color: #1a4a7d;
+}
+
+h3 { /* Company names / Background sub-titles */
+    font-size: 11pt; /* Slightly smaller than job titles */
+    font-weight: 600; /* Match other headings */
+    color: #333; /* Darker grey */
+    margin-bottom: 0.8em; /* More space after subtitle */
+    margin-top: 0; /* Remove top margin if it's the first element */
+}
+
+h4 { /* Job Titles */
+    font-size: 11pt;
+    font-weight: 700; /* Ensure bold */
+    color: #333; /* Darker */
+    margin-bottom: 0.5em;
+}
+
+h5 { /* Sub-roles like at eBay */
+    font-size: 10pt;
+    font-weight: bold;
+    color: #222;
+    margin-top: 0.8em;
+    margin-bottom: 0.3em;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0.8em;
+}
+
+a {
+    color: #0066cc; /* Brighter blue for links */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #004d99; /* Darker blue on hover */
+    text-decoration: none; /* Keep no underline */
+}
+
+ul {
+    list-style: none;
+    padding-left: 1.2em;
+    margin-bottom: 0.8em;
+}
+
+li {
+    margin-bottom: 0.4em;
+    position: relative;
+}
+
+/* Use a standard disc for job bullet points */
+.experience ul li::before {
+    content: '•';
+    position: absolute;
+    left: -1.2em;
+    color: #1a4a7d; /* Match heading blue */
+    font-weight: bold;
+}
+.experience ul {
+    padding-left: 1.5em; /* More space for job bullets */
+    gap: 10px 25px; /* Increased gap */
+    align-items: center; /* Vertically align items in the middle */
+}
+
+strong {
+    font-weight: 700;
+    color: inherit;
+}
+
+/* Header */
+header {
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Picture | Content | Contact */
+    grid-template-rows: auto;
+    grid-template-areas:
+        "picture content contact";
+    gap: 10px 25px; /* Increased gap */
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    align-items: center; /* Vertically align items in the middle */
+}
+
+.header-content {
+    grid-area: content;
+}
+
+.header-content h2 { /* Job Title under name */
+    font-size: 14pt;
+    font-weight: 400; /* Lighter weight */
+    color: #555;
+    border-bottom: none;
+    margin: 0 0 5px 0;
+    padding: 0;
+    text-transform: none;
+}
+
+.location {
+    font-size: 9pt;
+    color: #666;
+}
+
+.profile-pic {
+    grid-area: picture;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #eee;
+    /* Removed margin-top */
+}
+
+.contact-info {
+    grid-area: contact;
+    text-align: right;
+    font-size: 10pt;
+    gap: 25px; /* Space between aside and content */
+    align-items: flex-start; /* Align items to the top */
+}
+.contact-info p {
+    margin: 0;
+}
+
+/* Intro Section */
+.intro p {
+    margin-bottom: 1em;
+}
+
+/* Interests Section */
+.interests h2 {
+    margin-bottom: 0.8em;
+}
+.interests ul {
+    padding-left: 0;
+    columns: 3; /* Create 3 columns */
+    column-gap: 30px;
+}
+.interests li {
+    margin-bottom: 0.5em;
+    font-size: 9.5pt;
+    break-inside: avoid-column; /* Prevent items breaking across columns */
+}
+.emoji {
+    display: inline-block;
+    width: 1.5em; /* Align text */
+    text-align: center;
+}
+
+/* Experience Section */
+.experience .job {
+    margin-bottom: 1.8em;
+    display: flex; /* Use flexbox for layout */
+    gap: 25px; /* Space between aside and content */
+    align-items: flex-start; /* Align items to the top */
+    padding: 10px 0; /* Add some vertical padding */
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 4px;
+}
+.experience .job:last-child {
+    margin-bottom: 0;
+}
+
+.job-meta {
+    flex: 0 0 200px; /* Fixed width for the aside, prevents shrinking/growing */
+    padding-right: 15px; /* Add some space to the right */
+}
+
+.job-meta h3, .job-meta h4, .job-meta p {
+    margin-bottom: 0.3em; /* Reduce bottom margin within the aside */
+}
+
+.job-content {
+    flex: 1; /* Allow content to take remaining space */
+}
+
+.company-description {
+    font-size: 9.5pt; /* Slightly smaller font */
+    color: #666; /* Lighter grey color */
+    font-style: italic; /* Make company description italic */
+    margin-bottom: 1em; /* Space before the main description/highlights */
+}
+
+/* Highlight style */
+strong.highlight {
+    background-color: #cfe7ff; /* Blue highlight for general text */
+}
+
+.location-dates {
+    font-size: 9pt;
+    color: #666;
+    margin-bottom: 0.2em;
+}
+.dates { /* Span for dates within titles/subtitles */
+    font-weight: normal;
+    font-size: 9pt;
+    color: #666;
+    margin-left: 0.5em;
+}
+
+/* Major Projects Paragraph */
+.major-projects {
+    font-size: 9pt;
+    color: #555;
+    margin-top: 1em;
+    line-height: 1.4;
+}
+
+.major-projects em {
+    font-style: italic;
+    color: #333;
+}
+
+.major-projects strong {
+    font-weight: 600; /* Slightly less bold than headings */
+    color: #333;
+}
+
+/* Background Section */
+.background h2 {
+    margin-bottom: 1.5em; /* Consistent spacing after main title */
+}
+
+/* Style h3 within the background section for consistent spacing */
+.background .background-section h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #333;
+    margin-top: 2em; /* Consistent space ABOVE each subsection title */
+    margin-bottom: 1em; /* Consistent space BELOW each subsection title */
+}
+
+/* Remove extra top margin for the very first h3 in the background section */
+.background .background-section:first-of-type h3 {
+    margin-top: 0;
+}
+
+.background-section {
+    margin-bottom: 0; /* Remove bottom margin to create continuous flow */
+}
+.background-section p {
+    margin-bottom: 0.6em; /* Slightly more space between paragraphs */
+    font-size: 10pt;
+}
+.background-section p em { /* Italicized text like institution/dates */
+    font-style: normal; /* Make it normal */
+    color: #666; /* Grey color */
+    font-size: 9pt;
+    margin-left: 5px;
+}
+
+.accelerator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.accelerator:last-of-type {
+    margin-bottom: 0; /* Remove margin from last item in accelerator group */
+}
+.accelerator img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+.accelerator p {
+    margin: 0;
+    font-size: 9.5pt;
+    line-height: 1.4;
+}
+.emoji-line {
+    font-size: 11pt; /* Make emojis slightly larger */
+}
+.emoji-line .emoji { /* Ensure spacing for background emojis */
+     width: auto; /* Reset width */
+     margin-right: 5px;
+}
+
+/* Basic Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+    h1 { font-size: 20pt; }
+    h2 { font-size: 13pt; }
+    h3 { font-size: 11pt; }
+    h4 { font-size: 10pt; }
+    body { font-size: 9.5pt; }
+
+    header {
+        grid-template-columns: 1fr; /* Stack header elements */
+        grid-template-areas:
+            "picture"
+            "content"
+            "contact";
+        text-align: center;
+        gap: 10px;
+    }
+    .profile-pic {
+        margin: 0 auto 10px auto; /* Center picture */
+    }
+    .contact-info {
+        text-align: center;
+    }
+    .interests ul {
+        columns: 2; /* Reduce columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .interests ul {
+        columns: 1; /* Single column on very small screens */
+    }
+}
+
+/* Core Strengths Section */
+.core-strengths {
+    margin: 2.5em 0; /* Space above/below */
+}
+
+.strength-item {
+    display: flex;
+    align-items: baseline; /* Align baseline of title and text */
+    gap: 20px;
+    padding: 0.8em 0;
+    border-bottom: 1px solid #cfe7ff; /* Light blue separator (match highlight bg) */
+}
+
+.strength-item:last-child {
+    border-bottom: none;
+}
+
+.strength-title {
+    flex: 0 0 220px; /* Fixed width for title */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 10pt;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.strength-item p {
+    flex: 1;
+    margin: 0;
+    font-size: 10pt;
+    color: #555;
+}
+
+/* Training List Styles */
+.education-training-section h2 {
+    /* Uses default h2 styles */
+}
+
+.education-training {
+    /* Remove potential top margin if it was the first subsection */
+    margin-top: 0;
+}
+
+.training-list {
+    list-style: none;
+    padding-left: 0; /* Remove default padding */
+    columns: 2; /* Make desktop 2 columns */
+    column-gap: 30px; /* Desktop gap */
+}
+
+.training-list li {
+    margin-bottom: 0.6em;
+    font-size: 10pt;
+    position: relative;
+    padding-left: 1.8em; /* Space for arrow */
+}
+
+.training-list .arrow {
+    position: absolute;
+    left: 0;
+    top: 1px; /* Adjust vertical alignment */
+    color: #1a4a7d; /* Match heading blue */
+    font-weight: bold;
+}
+
+.training-list .source {
+    font-size: 9pt;
+    color: #777;
+    margin-left: 0.5em;
+}
+
+/* Ensure education paragraphs have consistent spacing */
+.education-training > p {
+    margin-bottom: 0.6em;
+}
+
+/* Space before training list if it follows paragraphs */
+.education-training > p + .training-list {
+    margin-top: 1.2em;
+}
+
+/* Curiosities Section */
+.curiosities h2 {
+    /* Uses default h2 styles */
+}
+.curiosities-content p {
+    margin-bottom: 0.6em;
+}
+.curiosities-content .emoji-line {
+    font-size: 11pt;
+    margin-top: 1em;
+}
+.curiosities-content .emoji {
+    margin-right: 5px;
+}
+
+/* Re-add highlight background color definitions */
+strong.highlight {
+    background-color: #cfe7ff; /* Blue highlight for general text */
+}
+
+/* END OF ORIGINAL FILE CONTENT BEFORE MOVING PRINT BLOCK */
+
+/* Print Styles */
+@page {
+    margin: 0.4in 0.25in; /* Aggressively reduced margins */
+}
+
+@media print {
+    body {
+        background-color: #fff !important; /* Ensure white bg */
+        font-size: 8.5pt; /* Slightly larger base font */
+        color: #000; /* Ensure pure black text */
+        line-height: 1.4; /* More standard line height */
+        -webkit-print-color-adjust: exact; /* Attempt to force background colors */
+        print-color-adjust: exact;
+    }
+    .container {
+        max-width: 100% !important; /* Ensure it takes full width */
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        background-color: #fff !important;
+    }
+    h1, h2, h3, h4, h5 {
+        color: #000; /* Black headers for print */
+        font-family: 'Lato', sans-serif; /* Revert to simpler font for print */
+    }
+    h2 {
+        font-size: 12pt; /* Slightly smaller section titles */
+        border-bottom: 1px solid #000; /* Thinner border for print */
+        margin-top: 1.2em; /* Restore some space above titles */
+        margin-bottom: 0.8em; /* Restore some space below titles */
+    }
+    a {
+        font-size: inherit !important; /* Ensure links inherit smaller size */
+        color: #000; /* Black links */
+        text-decoration: none !important; /* Remove underline */
+    }
+    a[href^="http"]::after {
+        /* Optional: show URLs for external links */
+        /* content: " (" attr(href) ")"; */
+        /* font-size: 8pt; */
+        /* color: #555; */
+    }
+    /* Hide elements not needed for print */
+    .profile-pic {
+         border: none;
+    }
+    /* Try to prevent page breaks inside sections/jobs */
+    .strength-item, .interests ul { /* Removed .job */
+        page-break-inside: avoid;
+    }
+    .interests ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* Create 3 equal columns */
+        gap: 5px 15px; /* Row gap, Column gap */
+        page-break-inside: avoid;
+        font-size: 7pt; /* Even smaller font just for this list */
+        padding-left: 0; /* Ensure no padding interferes */
+        margin-bottom: 0; /* Remove bottom margin */
+    }
+    .interests ul li {
+        line-height: 1.2; /* Tighter line height for interests */
+        padding-left: 1.5em; /* Keep padding for emoji */
+        page-break-inside: avoid; /* Try avoiding breaks within items */
+    }
+    header {
+        /* Force grid layout for print header */
+        display: grid !important;
+        grid-template-columns: 100px 1fr auto; /* Explicit width for Picture column */
+        grid-template-rows: auto !important; /* Explicitly set rows */
+        grid-template-areas: "picture content contact" !important; /* Explicitly set areas */
+        align-items: start; /* Align items to top */
+        border-bottom: none; /* Remove border for cleaner print */
+        margin-bottom: 10px; /* Further reduce space after header */
+        padding-bottom: 5px;
+        gap: 10px 20px; /* Adjust gap as needed for print */
+    }
+    .profile-pic {
+        justify-self: start; /* Align image itself to the start of its cell */
+    }
+    .header-content {
+        justify-self: start; /* Align content block to the start of its cell */
+        text-align: left;
+    }
+    .contact-info {
+        justify-self: end; /* Align contact block to the end of its cell */
+        text-align: right;
+    }
+    ul li::before { /* Ensure bullets are black */
+         color: #000;
+    }
+
+    /* Education/Training List */
+    .training-list {
+        columns: 2;
+        column-gap: 25px; /* Increase gap slightly */
+    }
+
+    /* Keep job layout as flex for print, but adjust widths */
+    .experience .job {
+        display: flex; /* Use flex */
+        gap: 0;
+        padding: 0;
+        margin-bottom: 1em; /* More space between jobs */
+        gap: 10px;
+    }
+    .experience .job:hover {
+        background-color: transparent !important; /* Ensure no hover bg */
+    }
+    .job-meta {
+        flex: 0 0 150px; /* Increase width ~10% */
+        padding-right: 0; /* No extra padding needed */
+        margin-bottom: 0; /* Reset margin */
+    }
+    .job-content {
+        flex: 1; /* Take remaining space */
+    }
+    .job-content p {
+        margin-bottom: 0.6em; /* Restore paragraph spacing */
+        line-height: 1.4;
+    }
+    .company-description {
+        color: #333; /* Darker text for print */
+        margin-bottom: 0.5em;
+        font-size: inherit; /* Reset font size */
+    }
+    /* Restore highlight background for print */
+    strong.highlight {
+        padding: 0;
+        border-radius: 0;
+        font-weight: bold; /* Keep bold */
+    }
+
+    /* Core Strengths Print */
+    .strength-item {
+        display: block; /* Stack for print */
+        page-break-inside: avoid;
+        border-bottom: 1px solid #ccc;
+        padding: 0.3em 0;
+        margin: 0; /* Remove potential extra margins */
+        display: flex; /* Use flex for strengths in print */
+        align-items: baseline;
+        gap: 15px;
+    }
+    .strength-title {
+        flex: none;
+        display: block; /* Ensure it's block */
+        flex: 0 0 150px; /* Further reduce width for title */
+        margin-bottom: 0.1em;
+        font-weight: bold; /* Make title bold */
+        font-size: 8pt;
+    }
+    .strength-item p {
+        margin: 0;
+        font-size: 8pt;
+        line-height: 1.4; /* Adjust line height if needed */
+    }
+} 
